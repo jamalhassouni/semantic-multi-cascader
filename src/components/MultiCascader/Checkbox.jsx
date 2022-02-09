@@ -4,7 +4,7 @@ import { hasChildChecked, hasParentChecked } from "./libs/utils";
 import MultiCascader from "./container";
 
 export default React.memo((props) => {
-  const { node } = props;
+  const { node, label } = props;
   const { value: containerValue, handleSelectChange } =
     MultiCascader.useContainer();
 
@@ -17,7 +17,7 @@ export default React.memo((props) => {
       const { checked } = data;
       handleSelectChange(node, checked);
     },
-    [node]
+    [node, handleSelectChange]
   );
 
   const checked = hasParentChecked(node, containerValue);
@@ -29,6 +29,7 @@ export default React.memo((props) => {
       onChange={handleChange}
       checked={checked}
       indeterminate={indeterminate}
+      label={label}
     />
   );
 });

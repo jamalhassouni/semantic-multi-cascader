@@ -54,9 +54,6 @@
 .semantic-multi-cascader-popup {
   overflow-x: hidden;
   overflow-y: auto;
-  // background: #fff;
-  // border-radius: 2px;
-  // box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   .ant-empty-normal {
     min-width: 114px;
   }
@@ -66,6 +63,14 @@
 }
 .semantic-multi-cascader-popup-buttons {
   margin-left: auto;
+  display: inline-flex;
+  flex-direction: row;
+  font-size: 0;
+  vertical-align: baseline;
+  margin: 0 0.25em 0 0;
+  .button {
+    margin-right: 5px !important;
+  }
 }
 .semantic-multi-cascader-popup-footer {
   display: flex;

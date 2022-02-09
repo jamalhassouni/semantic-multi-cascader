@@ -17,7 +17,7 @@ export default React.memo((props) => {
   const handleClick = useCallback(() => {
     setLoading(true);
     handleCascaderChange(node, depth);
-  }, [node, depth]);
+  }, [node, depth, handleCascaderChange]);
 
   const active = useMemo(
     () => !!menuPath.find((item) => item.value === value),

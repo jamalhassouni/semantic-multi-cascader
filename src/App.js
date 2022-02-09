@@ -33,7 +33,11 @@ function App() {
     <MultiCascader
       value={value}
       onChange={onChange}
+      cancelBtnClass="cancel-btn"
+      confirmBtnClass="confirm-btn"
       options={options}
+      cancelText={"ilgha2"}
+      selectAll={true}
       placeholder="Select Skills"
     />
   );

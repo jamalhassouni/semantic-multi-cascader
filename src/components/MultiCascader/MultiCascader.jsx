@@ -6,7 +6,7 @@ import MultiCascaderContainer from "./container";
 import Selector from "./Selector";
 import { matchAllLeafValue, reconcile } from "./libs/utils";
 import { prefix } from "./constants";
-import "./index.scss";
+import "./index.css";
 export const MContext = React.createContext("");
 
 const Popup = (props) => {
@@ -15,6 +15,8 @@ const Popup = (props) => {
     options,
     selectAll,
     onCancel,
+    cancelBtnClass,
+    confirmBtnClass,
     onConfirm,
     okText = "Confirm",
     cancelText = "Cancel",
@@ -31,15 +33,23 @@ const Popup = (props) => {
             <div className={`${prefix}-popup-footer`}>
               {selectAll ? (
                 <div className={`${prefix}-popup-all`}>
-                  <Checkbox node={flattenData[0]} />
-                  &nbsp;&nbsp;{selectAllText}
+                  <Checkbox node={flattenData[0]} label={selectAllText} />
                 </div>
               ) : null}
               <div className={`${prefix}-popup-buttons`}>
-                <Button size="small" onClick={onCancel}>
+                <Button
+                  size="small"
+                  className={cancelBtnClass ? cancelBtnClass : ""}
+                  onClick={onCancel}
+                >
                   {cancelText}
                 </Button>
-                <Button size="small" primary onClick={onConfirm}>
+                <Button
+                  size="small"
+                  className={confirmBtnClass ? confirmBtnClass : ""}
+                  primary
+                  onClick={onConfirm}
+                >
                   {okText}
                 </Button>
               </div>
@@ -54,14 +64,8 @@ const Popup = (props) => {
 
 const Component = React.memo(
   React.forwardRef((props, ref) => {
-    const { getPopupContainer: getContextPopupContainer } =
-      React.useContext(MContext);
     const selectorRef = useRef(null);
-    const {
-      disabled,
-      popupTransitionName = "ant-slide-up",
-      getPopupContainer,
-    } = props;
+    const { disabled } = props;
     const {
       popupVisible,
       setPopupVisible,
@@ -73,7 +77,7 @@ const Component = React.memo(
 
     const handleCancel = useCallback(() => {
       setPopupVisible(false);
-    }, []);
+    }, [setPopupVisible]);
 
     const handleItemRemove = useCallback(
       (item) => {

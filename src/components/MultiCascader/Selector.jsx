@@ -2,7 +2,6 @@ import React, { useCallback } from "react";
 import { Icon } from "semantic-ui-react";
 import classnames from "classnames";
 import { keyBy } from "lodash";
-import Overflow from "rc-overflow";
 import MultiCascaderContainer from "./container";
 import { prefix } from "./constants";
 
@@ -24,7 +23,7 @@ const Tag = (props) => {
   const text = renderTitle(value) || item.text || item;
 
   return (
-    <a className="ui label" value={text}>
+    <span className="ui label" value={text}>
       {text}
       {closable && (
         <Icon
@@ -33,7 +32,7 @@ const Tag = (props) => {
           onClick={handleRemove}
         />
       )}
-    </a>
+    </span>
   );
 };
 
@@ -85,19 +84,19 @@ const Selector = (props) => {
     [selectedItemsMap, renderTitle, onRemove]
   );
 
-  const renderRest = useCallback(
-    (omittedValues) => (
-      <Tag
-        closable={false}
-        renderTitle={() => <span>+{omittedValues.length}...</span>}
-        item={{
-          text: "",
-          value: "",
-        }}
-      />
-    ),
-    []
-  );
+  // const renderRest = useCallback(
+  //   (omittedValues) => (
+  //     <Tag
+  //       closable={false}
+  //       renderTitle={() => <span>+{omittedValues.length}...</span>}
+  //       item={{
+  //         text: "",
+  //         value: "",
+  //       }}
+  //     />
+  //   ),
+  //   []
+  // );
 
   const values = valueProps || hackValue.current || [];
 
@@ -124,13 +123,9 @@ const Selector = (props) => {
         <Icon name="dropdown" />
 
         {values.length ? (
-          <Overflow
-            prefixCls={`${prefix}-overflow`}
-            data={values}
-            renderItem={renderItem}
-            renderRest={renderRest}
-            maxCount={maxTagCount}
-          />
+          values.map((item) => {
+            return renderItem(item);
+          })
         ) : (
           <span
             className={`${prefix}-placeholder semantic-select-selection-placeholder default text`}
@@ -138,6 +133,21 @@ const Selector = (props) => {
             {placeholder}
           </span>
         )}
+
+        {/* <Overflow
+            prefixCls={`${prefix}-overflow`}
+            data={values}
+            renderItem={renderItem}
+            renderRest={renderRest}
+            maxCount={maxTagCount}
+          /> */
+        /* ) : (
+          <span
+            className={`${prefix}-placeholder semantic-select-selection-placeholder default text`}
+          >
+            {placeholder}
+          </span>
+        )} */}
       </div>
       {!disabled && allowClear ? (
         <span className="semantic-select-clear" onClick={handleClear}>

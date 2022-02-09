@@ -31,7 +31,7 @@ const Column = (props) => {
   );
 };
 
-export default (props) => {
+const Menu = (props) => {
   const { columnWidth } = props;
   const { menuData } = MultiCascader.useContainer();
 
@@ -50,3 +50,5 @@ export default (props) => {
     </div>
   );
 };
+
+export default Menu;

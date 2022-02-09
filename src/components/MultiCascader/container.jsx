@@ -21,6 +21,7 @@ const useCascade = (params) => {
   } = params || {};
   const [popupVisible, setPopupVisible] = useState(false);
   const dataRef = useRef(options);
+  const [menuPath, setMenuPath] = useState([]);
 
   useEffect(() => {
     dataRef.current = options;
@@ -56,6 +57,24 @@ const useCascade = (params) => {
     });
   }, [options, selectAll]);
 
+  const selectedItems = useMemo(() => {
+    return flattenData.filter((node) => {
+      return (valueProp || hackValue.current).includes(node.value);
+    });
+  }, [flattenData, valueProp]);
+
+  const triggerChange = useCallback(
+    (nextValue) => {
+      if (onChange) {
+        onChange(nextValue, selectedItems.slice(0));
+      }
+      hackValue.current = nextValue;
+      setValue(nextValue);
+      setPopupVisible(false);
+    },
+    [selectedItems, onChange]
+  );
+
   const transformValue = useCallback(
     (value) => {
       const nextValue = originalTransformValue(value, flattenData);
@@ -66,8 +85,11 @@ const useCascade = (params) => {
 
       return nextValue;
     },
-    [flattenData]
+    [flattenData, onChange, triggerChange]
   );
+
+  const [value, setValue] = useState(transformValue(valueProp || []));
+  const hackValue = useRef(value);
 
   const [menuData, setMenuData] = useState(() => {
     if (selectAll && flattenData.length === 1) {
@@ -80,28 +102,6 @@ const useCascade = (params) => {
         : flattenData.filter((item) => !item.parent),
     ];
   });
-
-  const [menuPath, setMenuPath] = useState([]);
-  const [value, setValue] = useState(transformValue(valueProp || []));
-  const hackValue = useRef(value);
-
-  const selectedItems = useMemo(() => {
-    return flattenData.filter((node) => {
-      return (valueProp || hackValue.current).includes(node.value);
-    });
-  }, [flattenData, valueProp, popupVisible, hackValue.current]);
-
-  const triggerChange = useCallback(
-    (nextValue) => {
-      if (onChange) {
-        onChange(nextValue, selectedItems.slice(0));
-      }
-      hackValue.current = nextValue;
-      setValue(nextValue);
-      setPopupVisible(false);
-    },
-    [selectedItems]
-  );
 
   const addMenu = useCallback((menu, index) => {
     if (menu && menu.length) {
@@ -142,7 +142,7 @@ const useCascade = (params) => {
       addMenu(children, depth + 1);
       setMenuPath((prevMenuPath) => prevMenuPath.slice(0, depth).concat(item));
     },
-    [menuPath, onCascaderChange]
+    [onCascaderChange, addChildrenToNode, addMenu]
   );
 
   const handleSelectChange = useCallback(
@@ -173,7 +173,7 @@ const useCascade = (params) => {
       setValue(transformValue(valueProp || hackValue.current));
       resetMenuState();
     }
-  }, [popupVisible]);
+  }, [popupVisible, resetMenuState, transformValue, valueProp]);
 
   return {
     menuPath,

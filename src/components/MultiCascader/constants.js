@@ -1,3 +1,3 @@
-export const All = "@@ALL";
+export const All = "*";
 
 export const prefix = "semantic-multi-cascader";
