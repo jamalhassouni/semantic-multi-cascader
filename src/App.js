@@ -36,7 +36,8 @@ function App() {
       cancelBtnClass="cancel-btn"
       confirmBtnClass="confirm-btn"
       options={options}
-      cancelText={"ilgha2"}
+      cancelText={"no"}
+      okText="ok"
       selectAll={true}
       placeholder="Select Skills"
     />

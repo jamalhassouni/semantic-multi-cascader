@@ -56,6 +56,11 @@ return (
     value={value}
     onChange={setValue}
     options={options}
+    cancelText={"no"}
+    cancelBtnClass="cancel-btn"
+    confirmBtnClass="confirm-btn"
+    okText="ok"
+    selectAll={true}
     placeholder="Select Skills"
   />
 )
@@ -72,6 +77,8 @@ return (
 | onChange            | (newVal) => void (required)                                                                   | Callback when finishing value select                                                                                                                                  |
 | selectAll           | boolean       (optional)                                                                      | Whether allow select all                                                                                                                                              |
 | className           | string    (optional)                                                                          | The additional css class                                                                                                                                              |
+| cancelBtnClass           | string    (optional)                                                                          | The additional css class for cancel button                                                                                                                                             |
+| confirmBtnClass           | string    (optional)                                                                          | The additional css class for ok button                                                                                                                                             |
 | style               | React.CSSProperties (optional)                                                                | The additional style                                                                                                                                                  |
 | disabled            | boolean        (optional)                                                                     | Whether disabled select                                                                                                                                               |
 | okText              | string      (optional)                                                                        | The text of the Confirm button                                                                                                                                        |
