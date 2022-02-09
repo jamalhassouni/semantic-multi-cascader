@@ -1,5 +1,6 @@
 # Release Notes
 
+- 0.1.5 - Cannot access 'triggerChange' before initialization
 - 0.1.5 - Fix  some errors during the build
 - 0.1.4 - Fix Styles and add custom props for button classes
 - 0.1.3 - Reduce Size

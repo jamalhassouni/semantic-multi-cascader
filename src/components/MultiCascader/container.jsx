@@ -22,6 +22,7 @@ const useCascade = (params) => {
   const [popupVisible, setPopupVisible] = useState(false);
   const dataRef = useRef(options);
   const [menuPath, setMenuPath] = useState([]);
+  let triggerChange;
 
   useEffect(() => {
     dataRef.current = options;
@@ -57,15 +58,33 @@ const useCascade = (params) => {
     });
   }, [options, selectAll]);
 
+  const transformValue = useCallback(
+    (value) => {
+      const nextValue = originalTransformValue(value, flattenData);
+
+      if (onChange && !shallowEqualArray(nextValue, value)) {
+        if (
+          typeof triggerChange === "function" &&
+          typeof triggerChange !== "undefined"
+        ) {
+          requestAnimationFrame(() => triggerChange(nextValue));
+        }
+      }
+
+      return nextValue;
+    },
+    [flattenData, onChange, triggerChange]
+  );
+
+  const [value, setValue] = useState(transformValue(valueProp || []));
+  const hackValue = useRef(value);
   const selectedItems = useMemo(() => {
     return flattenData.filter((node) => {
-      return (valueProp || (hackValue && hackValue?.current)).includes(
-        node.value
-      );
+      return (valueProp || hackValue?.current).includes(node.value);
     });
   }, [flattenData, valueProp]);
 
-  const triggerChange = useCallback(
+  triggerChange = useCallback(
     (nextValue) => {
       if (onChange) {
         onChange(nextValue, selectedItems.slice(0));
@@ -76,20 +95,6 @@ const useCascade = (params) => {
     },
     [selectedItems, onChange]
   );
-  const transformValue = useCallback(
-    (value) => {
-      const nextValue = originalTransformValue(value, flattenData);
-
-      if (onChange && !shallowEqualArray(nextValue, value)) {
-        requestAnimationFrame(() => triggerChange(nextValue));
-      }
-
-      return nextValue;
-    },
-    [flattenData, onChange, triggerChange]
-  );
-  const [value, setValue] = useState(transformValue(valueProp || []));
-  const hackValue = useRef(value);
 
   const [menuData, setMenuData] = useState(() => {
     if (selectAll && flattenData.length === 1) {
