@@ -59,7 +59,7 @@ const useCascade = (params) => {
 
   const selectedItems = useMemo(() => {
     return flattenData.filter((node) => {
-      return (valueProp || hackValue.current).includes(node.value);
+      return (valueProp || hackValue?.current).includes(node.value);
     });
   }, [flattenData, valueProp]);
 
@@ -74,7 +74,6 @@ const useCascade = (params) => {
     },
     [selectedItems, onChange]
   );
-
   const transformValue = useCallback(
     (value) => {
       const nextValue = originalTransformValue(value, flattenData);
@@ -87,7 +86,6 @@ const useCascade = (params) => {
     },
     [flattenData, onChange, triggerChange]
   );
-
   const [value, setValue] = useState(transformValue(valueProp || []));
   const hackValue = useRef(value);
 
@@ -170,7 +168,7 @@ const useCascade = (params) => {
   // Recalculate when the passed in value changes
   useEffect(() => {
     if (popupVisible) {
-      setValue(transformValue(valueProp || hackValue.current));
+      setValue(transformValue(valueProp || hackValue?.current));
       resetMenuState();
     }
   }, [popupVisible, resetMenuState, transformValue, valueProp]);
