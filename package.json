@@ -1,6 +1,6 @@
 {
   "name": "semantic-multi-cascader",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "private": false,
   "description": "A multiple cascader component for semantic",
   "keywords": [
@@ -29,7 +29,9 @@
     "README.md",
     "demo.png",
     "CHANGELOG.md",
-    "LICENSE.md"
+    "LICENSE.md",
+    ".gitignore",
+    ".npmignore"
   ],
   "author": "Jamal Hassouni",
   "license": "MIT",

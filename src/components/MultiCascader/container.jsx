@@ -59,7 +59,9 @@ const useCascade = (params) => {
 
   const selectedItems = useMemo(() => {
     return flattenData.filter((node) => {
-      return (valueProp || hackValue?.current).includes(node.value);
+      return (valueProp || (hackValue && hackValue?.current)).includes(
+        node.value
+      );
     });
   }, [flattenData, valueProp]);
 
