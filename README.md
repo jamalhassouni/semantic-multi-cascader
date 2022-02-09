@@ -1,70 +1,102 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# semantic-multi-cascader
 
-## Available Scripts
+![PRs Welcome](https://img.shields.io/badge/PRs-welcome-ff69b4.svg) ![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)
+![Codecov Coverage](https://img.shields.io/codecov/c/github/HelKyle/semantic-multi-cascader/master.svg)
+[![npm](https://img.shields.io/npm/v/semantic-multi-cascader)](https://www.npmjs.com/package/semantic-multi-cascader)
 
-In the project directory, you can run:
+A multiple cascader component for semantic
 
-### `yarn start`
+[![semantic-multi-cascader](https://nodei.co/npm/semantic-multi-cascader.png)](https://npmjs.org/package/semantic-multi-cascader)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<div style="max-width: 420px">
+  <img src="demo.png" alt="demo" />
+</div>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## How to use?
 
-### `yarn test`
+```shell
+npm install semantic-multi-cascader
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+or
 
-### `yarn build`
+```shell
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+yarn add semantic-multi-cascader
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```js
+const [value, setValue] = React.useState([]);
+const options = [
+  { text: "CSS", value: "css" },
+  { text: "Graphic Design", value: "design" },
+  { text: "HTML", value: "html" },
+  {
+    text: "Javascript Frameworks",
+    value: "javascript frameworks",
+    children: [
+      {
+        text: "Angular ",
+        value: "angular ",
+        children: [
+          { text: "Angular v1 ", value: "angular v1 " },
+          { text: "Angular v2 ", value: "angular v2 " },
+        ],
+      },
+      { text: "React js ", value: "React js" },
+      { text: "Vue js ", value: "Vue js" },
+      { text: "Ember js ", value: "Ember js" },
+    ],
+  },
+];
+return (
+  <MultiCascader
+    value={value}
+    onChange={setValue}
+    options={options}
+    placeholder="Select Skills"
+  />
+)
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Props
 
-### `yarn eject`
+| Props               | Type                                                                                | Description                                                                                                                                                           |
+| ------------------- | ----------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| value               | string[]                                                                            | Selected value                                                                                                                                                        |
+| options                | TreeNode[]  (required)                                                                        | Cascader options TreeNode  see [Options Props](#options-props)                                                                      |
+| allowClear          | boolean    (optional)                                                                         | Whether allow clear                                                                                                                                                   |
+| placeholder         | string    (required)                                                                          | The input placeholder                                                                                                                                                 |
+| onChange            | (newVal) => void (required)                                                                   | Callback when finishing value select                                                                                                                                  |
+| selectAll           | boolean       (optional)                                                                      | Whether allow select all                                                                                                                                              |
+| className           | string    (optional)                                                                          | The additional css class                                                                                                                                              |
+| style               | React.CSSProperties (optional)                                                                | The additional style                                                                                                                                                  |
+| disabled            | boolean        (optional)                                                                     | Whether disabled select                                                                                                                                               |
+| okText              | string      (optional)                                                                        | The text of the Confirm button                                                                                                                                        |
+| cancelText          | string       (optional)                                                                       | The text of the Cancel button                                                                                                                                         |
+| selectAllText       | string    (optional)                                                                          | The text of the SelectAll radio                                                                                                                                       |
+| maxTagCount         | number \| responsive (optional)                      |  Max tag count to show. responsive will cost render performance                                                                                                                                          |
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Options Props
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+| Props               | Type                                                                                | Description                                                                                                                                                           |
+| ------------------- | ----------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| text               | string    (required)                                                                      |  Displayed text                                                                                                                  |
+| value               | string   (required)                                                                       | Selected value                                                                                                                                                        |
+| children?               | TreeNode  (optional)                                                                          |  Nested children  (same options props )                                                                                                                                                       |
+| isLeaf?               | boolean  (optional)                                                                          |  Tell component this node is a leaf node                                                                                                                                                        |
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Contributing
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+The people who contribute to semantic-multi-cascader do so for the love of open source, our users and ecosystem, and most importantly, pushing the web forward together.Developers like you can help by contributing to rich and vibrant documentation, issuing pull requests to help us cover niche use cases, and to help sustain what you love about semantic-multi-cascader. Anybody can help by doing any of the following: use semantic-multi-cascader in projects,Contribute to the core repository.
 
-## Learn More
+All pull requests are welcome !
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Changelog
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
 
-### Code Splitting
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+semantic-multi-cascader uses the MIT license. See [LICENSE](LICENSE.md) for more details.

@@ -1,24 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import MultiCascader from "./components/index";
+const options = [
+  { text: "CSS", value: "css" },
+  { text: "Graphic Design", value: "design" },
+  { text: "HTML", value: "html" },
+  {
+    text: "Javascript Frameworks",
+    value: "javascript frameworks",
+    children: [
+      {
+        text: "Angular ",
+        value: "angular ",
+        children: [
+          { text: "Angular v1 ", value: "angular v1 " },
+          { text: "Angular v2 ", value: "angular v2 " },
+        ],
+      },
+      { text: "React js ", value: "React js" },
+      { text: "Vue js ", value: "Vue js" },
+      { text: "Ember js ", value: "Ember js" },
+    ],
+  },
+];
 
 function App() {
+  const [value, setValue] = React.useState([]);
+  const onChange = (value) => {
+    console.log("onChange", value);
+    setValue(value);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <MultiCascader
+      value={value}
+      onChange={onChange}
+      options={options}
+      placeholder="Select Skills"
+    />
   );
 }
 
