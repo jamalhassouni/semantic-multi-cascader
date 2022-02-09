@@ -1,1 +1,0 @@
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.prefix=exports.All=void 0;const All="@@ALL";exports.All="@@ALL";const prefix="semantic-multi-cascader";exports.prefix="semantic-multi-cascader";
