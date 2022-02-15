@@ -1,5 +1,6 @@
 # Release Notes
 
+- 0.1.9 - Fix Unknown Prop Warning
 - 0.1.8 - Update  Documentation
 - 0.1.7 - Add support for next.js
 - 0.1.5 - Cannot access 'triggerChange' before initialization

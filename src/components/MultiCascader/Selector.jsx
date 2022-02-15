@@ -55,6 +55,8 @@ const Selector = (props) => {
     renderTitle,
     selectLeafOnly,
     maxTagCount,
+    confirmBtnClass,
+    cancelBtnClass,
     ...rest
   } = props;
   const { selectedItems, hackValue } = MultiCascaderContainer.useContainer();

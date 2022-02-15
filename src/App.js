@@ -35,8 +35,8 @@ function App() {
     <MultiCascader
       value={value}
       onChange={onChange}
-      cancelbtnclass="cancel-btn"
-      confirmbtnclass="confirm-btn"
+      cancelBtnClass="cancel-btn"
+      confirmBtnClass="confirm-btn"
       options={options}
       cancelText={"no"}
       okText="ok"
