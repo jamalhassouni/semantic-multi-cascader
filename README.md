@@ -28,6 +28,7 @@ yarn add semantic-multi-cascader
 
 ```js
 import MultiCascader from "semantic-multi-cascader";
+import  "semantic-multi-cascader/dist/semantic-multi-cascader.min.css";
 const [value, setValue] = React.useState([]);
 const options = [
   { text: "CSS", value: "css" },

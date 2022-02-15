@@ -6,7 +6,6 @@ import MultiCascaderContainer from "./container";
 import Selector from "./Selector";
 import { matchAllLeafValue, reconcile } from "./libs/utils";
 import { prefix } from "./constants";
-import "./index.css";
 export const MContext = React.createContext("");
 
 const Popup = (props) => {
@@ -15,8 +14,8 @@ const Popup = (props) => {
     options,
     selectAll,
     onCancel,
-    cancelBtnClass,
-    confirmBtnClass,
+    cancelbtnclass,
+    confirmbtnclass,
     onConfirm,
     okText = "Confirm",
     cancelText = "Cancel",
@@ -39,14 +38,14 @@ const Popup = (props) => {
               <div className={`${prefix}-popup-buttons`}>
                 <Button
                   size="small"
-                  className={cancelBtnClass ? cancelBtnClass : ""}
+                  className={cancelbtnclass ? cancelbtnclass : ""}
                   onClick={onCancel}
                 >
                   {cancelText}
                 </Button>
                 <Button
                   size="small"
-                  className={confirmBtnClass ? confirmBtnClass : ""}
+                  className={confirmbtnclass ? confirmbtnclass : ""}
                   primary
                   onClick={onConfirm}
                 >

@@ -133,21 +133,6 @@ const Selector = (props) => {
             {placeholder}
           </span>
         )}
-
-        {/* <Overflow
-            prefixCls={`${prefix}-overflow`}
-            data={values}
-            renderItem={renderItem}
-            renderRest={renderRest}
-            maxCount={maxTagCount}
-          /> */
-        /* ) : (
-          <span
-            className={`${prefix}-placeholder semantic-select-selection-placeholder default text`}
-          >
-            {placeholder}
-          </span>
-        )} */}
       </div>
       {!disabled && allowClear ? (
         <span className="semantic-select-clear" onClick={handleClear}>

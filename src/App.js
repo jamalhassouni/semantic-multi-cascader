@@ -1,5 +1,7 @@
 import React from "react";
 import MultiCascader from "./components/index";
+import "./components/semantic-multi-cascader.min.css";
+
 const options = [
   { text: "CSS", value: "css" },
   { text: "Graphic Design", value: "design" },
@@ -33,12 +35,12 @@ function App() {
     <MultiCascader
       value={value}
       onChange={onChange}
-      cancelBtnClass="cancel-btn"
-      confirmBtnClass="confirm-btn"
+      cancelbtnclass="cancel-btn"
+      confirmbtnclass="confirm-btn"
       options={options}
       cancelText={"no"}
       okText="ok"
-      selectAll={true}
+      selectAll={true} // default false
       placeholder="Select Skills"
     />
   );
