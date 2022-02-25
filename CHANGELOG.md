@@ -1,5 +1,6 @@
 # Release Notes
 
+- 0.1.10 - Fix can't resolve core-js/modules
 - 0.1.9 - Fix Unknown Prop Warning
 - 0.1.8 - Update  Documentation
 - 0.1.7 - Add support for next.js

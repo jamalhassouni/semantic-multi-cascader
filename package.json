@@ -49,8 +49,9 @@
     "semantic-ui-react": "^2.1.1"
   },
   "dependencies": {
-    "unstated-next": "^1.1.0",
-    "classnames": "^2.3.1"
+    "classnames": "^2.3.1",
+    "core-js": "^3.21.1",
+    "unstated-next": "^1.1.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.17.0",
