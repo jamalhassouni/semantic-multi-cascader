@@ -1,5 +1,5 @@
 import React, { useCallback } from "react";
-import { Icon } from "semantic-ui-react";
+import { Icon, Label } from "semantic-ui-react";
 import classnames from "classnames";
 import { keyBy } from "lodash";
 import MultiCascaderContainer from "./container";
@@ -50,6 +50,7 @@ const Selector = (props) => {
     value: valueProps,
     onChange,
     okText,
+    label,
     cancelText,
     selectAllText,
     renderTitle,
@@ -115,6 +116,8 @@ const Selector = (props) => {
       ref={forwardRef}
       {...rest}
     >
+      {label && <label className="semantic-select-label">{label}</label>}
+
       <div
         role="listbox"
         aria-expanded="false"

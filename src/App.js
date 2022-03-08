@@ -34,6 +34,7 @@ function App() {
   return (
     <MultiCascader
       value={value}
+      label="Select Skills"
       onChange={onChange}
       cancelBtnClass="cancel-btn"
       confirmBtnClass="confirm-btn"
