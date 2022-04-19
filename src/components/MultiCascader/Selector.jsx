@@ -1,5 +1,5 @@
 import React, { useCallback } from "react";
-import { Icon, Label } from "semantic-ui-react";
+import { Icon } from "semantic-ui-react";
 import classnames from "classnames";
 import { keyBy } from "lodash";
 import MultiCascaderContainer from "./container";
@@ -47,6 +47,7 @@ const Selector = (props) => {
     disabled,
     options,
     selectAll,
+    isSingle,
     value: valueProps,
     onChange,
     okText,
@@ -78,6 +79,7 @@ const Selector = (props) => {
       return (
         <Tag
           key={item}
+          isSingle
           onRemove={onRemove}
           item={selectedItemsMap[item] || item}
           renderTitle={renderTitle}

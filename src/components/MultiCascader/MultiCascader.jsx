@@ -15,6 +15,7 @@ const Popup = (props) => {
   const {
     options,
     selectAll,
+    isSingle,
     onCancel,
     cancelBtnClass,
     confirmBtnClass,
@@ -30,7 +31,7 @@ const Popup = (props) => {
       {
         options && options.length ? (
           <>
-            <Menu />
+            <Menu isSingle={isSingle} />
             <div className={`${prefix}-popup-footer`}>
               {selectAll ? (
                 <div className={`${prefix}-popup-all`}>
@@ -147,6 +148,7 @@ const MultiCascader = React.forwardRef((props, ref) => {
 MultiCascader.defaultProps = {
   options: [],
   value: undefined,
+  isSingle: false,
 };
 
 export default MultiCascader;

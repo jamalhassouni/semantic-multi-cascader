@@ -4,7 +4,7 @@ import { prefix } from "./constants";
 import MenuItem from "./MenuItem";
 
 const Column = (props) => {
-  const { item, columnWidth, depth } = props;
+  const { item, columnWidth, depth, isSingle } = props;
   const ref = useRef();
   const [width, setWidth] = useState(columnWidth);
 
@@ -23,7 +23,12 @@ const Column = (props) => {
       <ul>
         {item.map((node) => {
           return (
-            <MenuItem key={node.value.toString()} depth={depth} node={node} />
+            <MenuItem
+              key={node.value.toString()}
+              isSingle={isSingle}
+              depth={depth}
+              node={node}
+            />
           );
         })}
       </ul>
@@ -32,7 +37,7 @@ const Column = (props) => {
 };
 
 const Menu = (props) => {
-  const { columnWidth } = props;
+  const { columnWidth, isSingle } = props;
   const { menuData } = MultiCascader.useContainer();
 
   return (
@@ -41,6 +46,7 @@ const Menu = (props) => {
         return (
           <Column
             item={item}
+            isSingle={isSingle}
             columnWidth={columnWidth}
             depth={index}
             key={item[0]?.value || index}

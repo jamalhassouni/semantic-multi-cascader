@@ -151,10 +151,14 @@ const useCascade = (params) => {
   );
 
   const handleSelectChange = useCallback(
-    (item, checked) => {
-      setValue((prevValue) =>
-        sortByTree(reconcile(item, checked, prevValue), flattenData)
-      );
+    (item, checked, isSingle) => {
+      setValue((prevValue) => {
+        if (isSingle) {
+          return sortByTree(reconcile(item, checked, []), flattenData);
+        } else {
+          return sortByTree(reconcile(item, checked, prevValue), flattenData);
+        }
+      });
     },
     [flattenData]
   );

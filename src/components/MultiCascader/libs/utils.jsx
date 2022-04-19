@@ -38,7 +38,7 @@ export function flattenTree(root) {
   return res;
 }
 
-// 是否有子节点（包括自己）被选中
+// Whether any child nodes (including themselves) are selected
 export function hasChildChecked(item, curValue) {
   function dfs(node) {
     if (!node) {
@@ -59,7 +59,7 @@ export function hasChildChecked(item, curValue) {
   return dfs(item);
 }
 
-// 是否有父节点（包括自己）被选中
+// Whether any parent node (including itself) is selected
 export function hasParentChecked(item, value) {
   let tmp = item;
 
@@ -142,7 +142,7 @@ export function liftTreeState(item, curVal) {
   return removeAllDescendanceValue(last, nextValue);
 }
 
-// 状态下沉
+// state sinking
 export function sinkTreeState(root, value) {
   const parentValues = [];
   const subTreeValues = [];
@@ -186,7 +186,7 @@ export function sinkTreeState(root, value) {
   return Array.from(new Set(nextValue.concat(subTreeValues)));
 }
 
-// checked, unchecked 时重新计算
+//  Recalculate when checked, unchecked
 export function reconcile(item, checked, value) {
   if (checked) {
     // If there is already a parent node checked, it is meaningless to check again, just ignore it

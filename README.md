@@ -61,7 +61,8 @@ return (
     cancelBtnClass="cancel-btn"
     confirmBtnClass="confirm-btn"
     okText="ok"
-    selectAll={true}
+    selectAll={false}
+    isSingle={true}
     placeholder="Select Skills"
   />
 )
@@ -77,6 +78,7 @@ return (
 | placeholder         | string    (required)                                                                          | The input placeholder                                                                                                                                                 |
 | onChange            | (newVal) => void (required)                                                                   | Callback when finishing value select                                                                                                                                  |
 | selectAll           | boolean       (optional)                                                                      | Whether allow select all                                                                                                                                              |
+| isSingle           | boolean       (optional)                                                                      | Enable Single Selection                                                                                                                                             |
 | className           | string    (optional)                                                                          | The additional css class                                                                                                                                              |
 | cancelBtnClass           | string    (optional)                                                                          | The additional css class for cancel button                                                                                                                                             |
 | confirmBtnClass           | string    (optional)                                                                          | The additional css class for ok button                                                                                                                                             |

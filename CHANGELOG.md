@@ -1,5 +1,6 @@
 # Release Notes
 
+- 0.1.12 - Adding support for Single Selection
 - 0.1.11 - Adding support for Label
 - 0.1.10 - Fix can't resolve core-js/modules
 - 0.1.9 - Fix Unknown Prop Warning

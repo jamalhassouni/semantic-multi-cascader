@@ -6,7 +6,7 @@ import { prefix } from "./constants";
 import Checkbox from "./Checkbox";
 
 export default React.memo((props) => {
-  const { node, depth } = props;
+  const { node, depth, isSingle } = props;
   const { children, value, text, isLeaf } = node;
   const { handleCascaderChange, menuPath, selectLeafOnly } =
     MultiCascader.useContainer();
@@ -29,7 +29,7 @@ export default React.memo((props) => {
 
   return (
     <li onClick={handleClick} className={cls}>
-      {checkboxHidden ? null : <Checkbox node={node} />}
+      {checkboxHidden ? null : <Checkbox isSingle={isSingle} node={node} />}
       <p
         className={`${prefix}-column-item-label`}
         style={{ paddingLeft: checkboxHidden ? "0px" : "" }}

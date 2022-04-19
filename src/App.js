@@ -41,7 +41,8 @@ function App() {
       options={options}
       cancelText={"no"}
       okText="ok"
-      selectAll={true} // default false
+      selectAll={false} // default false
+      isSingle={true} // default false
       placeholder="Select Skills"
     />
   );
